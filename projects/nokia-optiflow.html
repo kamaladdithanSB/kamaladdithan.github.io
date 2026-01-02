@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nokia OptiFlow — AI Production Optimization</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #05070c;
+      --panel: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.08);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #4f8cff;
+      --glow: rgba(79,140,255,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== Moving background ===== */
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--glow), transparent 60%);
+      animation: float 20s linear infinite;
+      filter: blur(40px);
+    }
+
+    .orb:nth-child(1) { top: 10%; left: 5%; }
+    .orb:nth-child(2) { bottom: 15%; right: 10%; animation-duration: 26s; }
+    .orb:nth-child(3) { top: 40%; right: 30%; animation-duration: 32s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-60px) translateX(40px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+
+    /* ===== Layout ===== */
+    section {
+      padding: 120px 10%;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 900px;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero span {
+      color: var(--accent);
+    }
+
+    .hero .metrics {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 20px 26px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    }
+
+    .metric strong {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    /* ===== Glass panels ===== */
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 40px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(79,140,255,0.15), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    /* ===== Lists ===== */
+    ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    li::before {
+      content: "→ ";
+      color: var(--accent);
+    }
+
+    /* ===== Footer CTA ===== */
+    .cta {
+      text-align: center;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 32px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 40px var(--glow);
+      transition: transform 0.3s;
+    }
+
+    .cta a:hover {
+      transform: scale(1.05);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background -->
+  <div class="bg-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Nokia <span>OptiFlow</span></h1>
+      <p>
+        An AI-driven production scheduling system built for real-time,
+        intelligent manufacturing operations — replacing static schedules
+        with adaptive decision-making.
+      </p>
+
+      <div class="metrics">
+        <div class="metric"><strong>+20%</strong><br/>Machine Utilization</div>
+        <div class="metric"><strong>−10%</strong><br/>Idle Workforce</div>
+        <div class="metric"><strong>&lt;5s</strong><br/>Reallocation Time</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <h2>⚡ Core Capabilities</h2>
+    <div class="grid">
+      <div class="glass card">
+        <h3>Intelligent Forecasting</h3>
+        <p>Demand prediction using Prophet & LSTM models for proactive planning.</p>
+      </div>
+      <div class="glass card">
+        <h3>Adaptive Scheduling</h3>
+        <p>Constraint optimization combined with reinforcement learning.</p>
+      </div>
+      <div class="glass card">
+        <h3>Real-Time Reallocation</h3>
+        <p>Instant rescheduling for machine failures or urgent jobs.</p>
+      </div>
+      <div class="glass card">
+        <h3>Interactive Dashboard</h3>
+        <p>Gantt charts, KPIs, alerts, and exportable reports.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <h2>🏗️ System Architecture</h2>
+    <div class="glass">
+      <ul>
+        <li><strong>Frontend:</strong> React, TailwindCSS, Recharts</li>
+        <li><strong>Backend:</strong> Python, Prophet, Stable-Baselines3 (RL)</li>
+        <li><strong>Visualization:</strong> Gantt Charts, KPI Panels, Alerts</li>
+        <li><strong>Deployment:</strong> Base44 Hosting</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- USAGE -->
+  <section>
+    <h2>🚀 How It Works</h2>
+    <div class="glass">
+      <ul>
+        <li>Upload job, machine, and worker datasets</li>
+        <li>Generate optimized schedules instantly</li>
+        <li>Simulate disruptions in real time</li>
+        <li>Export reports for operational insights</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <h2>📊 Measurable Impact</h2>
+    <div class="grid">
+      <div class="glass card"><h3>+15–20%</h3><p>Machine Utilization</p></div>
+      <div class="glass card"><h3>−10%</h3><p>Idle Time Reduction</p></div>
+      <div class="glass card"><h3>10×</h3><p>Scalability</p></div>
+      <div class="glass card"><h3>&lt;5 sec</h3><p>Disruption Recovery</p></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Experience Smart Manufacturing</h2>
+    <p>AI-powered scheduling built for Industry 4.0 operations.</p>
+    <a href="https://nokia-opti-flow-5e11eed5.base44.app/Dashboard">View Live Dashboard</a>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("section").forEach(section => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 80,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+        }
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>

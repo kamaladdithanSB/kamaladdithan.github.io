@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoWattAI — AI Energy Optimization</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #050907;
+      --panel: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.1);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #2fdc8c;
+      --glow: rgba(47,220,140,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== Moving Background ===== */
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, var(--glow), transparent 60%);
+      filter: blur(45px);
+      animation: float 26s linear infinite;
+    }
+
+    .orb:nth-child(1) { top: 12%; left: 8%; }
+    .orb:nth-child(2) { bottom: 10%; right: 10%; animation-duration: 34s; }
+    .orb:nth-child(3) { top: 45%; right: 28%; animation-duration: 40s; }
+
+    @keyframes float {
+      0% { transform: translate(0,0); }
+      50% { transform: translate(40px,-60px); }
+      100% { transform: translate(0,0); }
+    }
+
+    section {
+      padding: 120px 10%;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 4.3rem);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 900px;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero span {
+      color: var(--accent);
+    }
+
+    .metrics {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 22px 28px;
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    }
+
+    .metric strong {
+      font-size: 1.9rem;
+      color: var(--accent);
+    }
+
+    /* ===== Glass Panels ===== */
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 40px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.6);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(47,220,140,0.18), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      color: var(--muted);
+    }
+
+    li::before {
+      content: "→ ";
+      color: var(--accent);
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 34px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #003b22;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 0 45px var(--glow);
+      transition: transform 0.3s;
+    }
+
+    .cta a:hover {
+      transform: scale(1.06);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>Eco<span>Watt</span>AI</h1>
+      <p>
+        An AI-powered energy optimization platform helping households and
+        organizations reduce waste, lower costs, and cut carbon emissions.
+      </p>
+
+      <div class="metrics">
+        <div class="metric"><strong>↓ Bills</strong><br/>Energy Optimization</div>
+        <div class="metric"><strong>CO₂ ↓</strong><br/>Carbon Reduction</div>
+        <div class="metric"><strong>Smart</strong><br/>AI Recommendations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section>
+    <h2>🌍 Why EcoWattAI?</h2>
+    <div class="glass">
+      <p>
+        EcoWattAI acts as a <strong>smart energy coach</strong> —
+        analyzing usage patterns, detecting inefficiencies, and delivering
+        actionable insights that translate directly into savings and impact.
+      </p>
+      <p style="margin-top:16px;">
+        👉 Because every watt saved is a step toward a cleaner future.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <h2>🚀 Key Features</h2>
+    <div class="grid">
+      <div class="glass card">
+        <h3>AI Analytics</h3>
+        <p>Detects usage patterns and inefficiencies with ML models.</p>
+      </div>
+      <div class="glass card">
+        <h3>Smart Suggestions</h3>
+        <p>Personalized recommendations like shifting loads to off-peak hours.</p>
+      </div>
+      <div class="glass card">
+        <h3>Gamification</h3>
+        <p>Green Score, badges, and CO₂ savings visualized as trees planted.</p>
+      </div>
+      <div class="glass card">
+        <h3>Real-Time Simulation</h3>
+        <p>Compare before vs after optimization with live graphs.</p>
+      </div>
+      <div class="glass card">
+        <h3>Impact Calculator</h3>
+        <p>Convert saved kWh into cost savings and emissions avoided.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <h2>📊 How It Works</h2>
+    <div class="glass">
+      <ul>
+        <li>Upload CSV or Excel energy usage data</li>
+        <li>Automatic data cleaning & normalization</li>
+        <li>Linear Regression for future prediction</li>
+        <li>K-Means clustering to detect peak hours</li>
+        <li>Actionable optimization insights & impact tracking</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TECH -->
+  <section>
+    <h2>🛠️ Tech Stack</h2>
+    <div class="grid">
+      <div class="glass card">
+        <h3>Frontend</h3>
+        <p>React, TailwindCSS, Framer Motion, Recharts</p>
+      </div>
+      <div class="glass card">
+        <h3>Backend</h3>
+        <p>FastAPI, Scikit-learn, Pandas, NumPy</p>
+      </div>
+      <div class="glass card">
+        <h3>Tools</h3>
+        <p>Google Colab, GitHub, Base44</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section>
+    <h2>🌟 Impact & Recognition</h2>
+    <div class="glass">
+      <p><strong>First Place 🏆</strong> — VIT Chennai YUVA-AI-THON</p>
+      <p>Developed entirely by <strong>Kamal Addithan S B</strong></p>
+      <p>Academic support: SRM Institute of Science and Technology</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Experience EcoWattAI Live</h2>
+    <p>Turn energy data into savings and sustainability.</p>
+    <a href="https://eco-watt-ai-0df596b8.base44.app/Home" target="_blank">
+      Launch Live Demo
+    </a>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("section").forEach(section => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 80,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+        }
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

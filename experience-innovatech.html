@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MIT Square London — Research Internship</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #05070c;
+      --panel: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.08);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #4f8cff;
+      --glow: rgba(79,140,255,0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ===== Background ===== */
+    .bg-orbs {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, var(--glow), transparent 60%);
+      animation: float 20s linear infinite;
+      filter: blur(40px);
+    }
+
+    .orb:nth-child(1) { top: 10%; left: 5%; }
+    .orb:nth-child(2) { bottom: 15%; right: 10%; animation-duration: 26s; }
+    .orb:nth-child(3) { top: 40%; right: 30%; animation-duration: 32s; }
+
+    @keyframes float {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-40px, -60px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* ===== Layout ===== */
+    section {
+      padding: 120px 10%;
+    }
+
+    h1, h2 {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 950px;
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero span {
+      color: var(--accent);
+    }
+
+    .metrics {
+      margin-top: 40px;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 22px 28px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+
+    .metric strong {
+      font-size: 1.8rem;
+      color: var(--accent);
+    }
+
+    /* ===== Glass ===== */
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 40px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(79,140,255,0.15), transparent);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      color: #fff;
+    }
+
+    /* ===== Lists ===== */
+    ul {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      color: var(--muted);
+    }
+
+    li::before {
+      content: "→ ";
+      color: var(--accent);
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      text-align: center;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 16px 34px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 0 40px var(--glow);
+      transition: transform 0.3s;
+    }
+
+    .cta a:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="bg-orbs">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1>MIT Square <span>London</span></h1>
+      <p>
+        Successfully completed a research internship focused on sustainability,
+        emerging technologies, and impact-driven innovation — culminating in
+        internationally copyrighted research and an upcoming book publication.
+      </p>
+
+      <div class="metrics">
+        <div class="metric"><strong>23 / 150+</strong><br/>Teams Selected</div>
+        <div class="metric"><strong>90%</strong><br/>Efficiency Gain</div>
+        <div class="metric"><strong>180+</strong><br/>Countries Covered</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section>
+    <h2>⚡ Research Internship Overview</h2>
+    <div class="glass">
+      <ul>
+        <li><strong>Institution:</strong> MIT Square, London</li>
+        <li><strong>Role:</strong> Research Intern</li>
+        <li><strong>Project:</strong> EcoGrid — Renewable Energy Trading Platform</li>
+        <li><strong>Domains:</strong> AI, Blockchain, Sustainability, Optimization</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROJECT -->
+  <section>
+    <h2>🌱 EcoGrid — Core Research Work</h2>
+    <div class="glass">
+      <p>
+        EcoGrid is a blockchain-based renewable energy trading platform designed
+        to enable decentralized, scalable, and data-driven energy ecosystems.
+        The research explored how AI, blockchain, and optimization techniques
+        can improve efficiency, transparency, and sustainability in energy markets.
+      </p>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section>
+    <h2>🔍 Key Highlights</h2>
+    <div class="grid">
+      <div class="glass card">
+        <h3>Elite Selection</h3>
+        <p>Chosen among 23 teams from 150+ applicants in a sustainability-focused research cohort.</p>
+      </div>
+      <div class="glass card">
+        <h3>Research Depth</h3>
+        <p>Conducted extensive primary and secondary research on renewable energy trading models.</p>
+      </div>
+      <div class="glass card">
+        <h3>Performance Impact</h3>
+        <p>Designed and evaluated a system demonstrating up to 90% efficiency improvement.</p>
+      </div>
+      <div class="glass card">
+        <h3>Global Copyright</h3>
+        <p>Research officially protected across 180+ countries for the next 20 years.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENTORSHIP -->
+  <section>
+    <h2>🧠 Mentorship & Guidance</h2>
+    <div class="glass">
+      <p>
+        I am deeply grateful to be mentored by
+        <strong>Dr. Mithileysh Sathiyanarayanan</strong>, whose guidance in
+        research thinking, innovation strategy, and impact-driven problem solving
+        fundamentally shaped my approach throughout this journey.
+      </p>
+    </div>
+  </section>
+
+  <!-- FUTURE -->
+  <section>
+    <h2>🚀 What’s Next</h2>
+    <div class="glass">
+      <ul>
+        <li>Research evolving into an upcoming book publication (2026)</li>
+        <li>Continued work at the intersection of research and emerging technologies</li>
+        <li>Focus on sustainability and advisory-driven decision making</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Research. Technology. Impact.</h2>
+    <p>
+      Technology creates real impact only when backed by strong research,
+      clarity of purpose, and thoughtful execution.
+    </p>
+    <a href="index.html">Back to Portfolio</a>
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("section").forEach(section => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 80,
+        duration: 1,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+        }
+      });
+    });
+
+    lucide.createIcons();
+  </script>
+
+</body>
+</html>

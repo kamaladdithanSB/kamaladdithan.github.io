@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kamal Addithan — Creative Developer</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="light-bg-orbs">
+  <span class="orb orb1"></span>
+  <span class="orb orb2"></span>
+  <span class="orb orb3"></span>
+</div>
+
+  <div class="ambient-bg">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+
+
+  <!-- LIGHT CINEMATIC BACKGROUND -->
+  <div class="light-bg-orbs">
+    <div class="light-orb"></div>
+    <div class="light-orb"></div>
+    <div class="light-orb"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="logo">KA</div>
+    <div class="nav-pill">
+      <a href="#hero">Home</a>
+      <a href="#projects">Builds</a>
+      <a href="#about">About</a>
+    </div>
+    
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-left">
+      <p class="toggle">Real <span class="dot"></span> Corporate</p>
+
+      <h1>
+        <span>I’m Kamal</span><br>
+<span>I design systems</span><br>
+<em>that bring ideas</em><br>
+<span>to life</span>
+
+      </h1>
+
+      <p class="sub">
+        Complex systems, clean UX, and business-first thinking.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <canvas id="hero-canvas"></canvas>
+      <div class="typing-quote">
+  <span id="typed-text"></span>
+</div>
+
+      <!-- Floating Avatar -->
+      <div class="avatar">
+        <img src="avatar.png" alt="Kamal" />
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects">
+      <div class="projects-header">
+    <span class="section-tag">PROJECTS</span>
+    <h2 class="section-title">Things I’ve Built</h2>
+  </div>
+
+    <!-- PROJECT 1 -->
+    <div class="project" onclick="location.href='projects/ecowatt-ai.html'">
+      <div class="project-media">
+        <img src="assests/images/ecowatt-banner.png" alt="EcoWatt AI">
+        <div class="project-overlay">
+          <div class="project-icons">
+            <a href="https://github.com/kamaladdithanSB/Ecowatt-AI" target="_blank" onclick="event.stopPropagation()">
+              <img src="assests/icons8-github-100.png" alt="GitHub">
+            </a>
+            <a href="https://eco-watt-ai-0df596b8.base44.app/Home" target="_blank" onclick="event.stopPropagation()">
+              <img src="assests/icons8-youtube-live.svg" alt="Live Demo">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <h2>EcoWatt AI</h2>
+        <p>
+          AI-powered platform that helps households and organizations reduce
+          energy waste, lower electricity bills, and cut carbon emissions.
+        </p>
+        <button class="outline">View Case Study</button>
+      </div>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="project" onclick="location.href='projects/nokia-optiflow.html'">
+      <div class="project-media">
+        <img src="assests/images/nokia-optiflow-banner.png" alt="Nokia Optiflow">
+        <div class="project-overlay">
+          <div class="project-icons">
+            <a href="https://github.com/kamaladdithanSB/Nokia-Optiflow" target="_blank" onclick="event.stopPropagation()">
+              <img src="assests/icons8-github-100.png" alt="GitHub">
+            </a>
+            <a href="https://nokia-opti-flow-5e11eed5.base44.app/Dashboard" target="_blank" onclick="event.stopPropagation()">
+              <img src="assests/icons8-youtube-live.svg" alt="Live Demo">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <h2>Nokia Optiflow</h2>
+        <p>
+          AI-driven production scheduling system for real-time
+          adaptive resource optimization.
+        </p>
+        <button class="outline">View Case Study</button>
+      </div>
+    </div>
+
+     <!-- PROJECT 3 -->
+    <div class="project" onclick="location.href='projects/smartfinAI.html'">
+      <div class="project-media">
+        <img src="assests/images/smartfinAI-banner.png" alt="smartfinAI">
+        <div class="project-overlay">
+          <div class="project-icons">
+            <a href="https://github.com/kamaladdithanSB/SmartFinAI" target="_blank" onclick="event.stopPropagation()">
+              <img src="assests/icons8-github-100.png" alt="GitHub">
+            </a>
+            <a href="https://smart-fin-ai-4ea5119f.base44.app/" target="_blank" onclick="event.stopPropagation()">
+              <img src="assests/icons8-youtube-live.svg" alt="Live Demo">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <h2>SmartFin AI</h2>
+        <p>
+          SmartFin AI is a next-generation AI-powered financial analytics platform that predicts user spending risk in real-time and provides intelligent savings insights.
+
+Unlike traditional batch-trained models, SmartFin AI evolves continuously — it learns incrementally from every new transaction using online (streaming) machine learning via the River library.
+        </p>
+        <button class="outline">View Case Study</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HACKATHONS & PUBLICATIONS -->
+<section class="hackathons" id="hackathons">
+  <h2>🏆 Hackathons & 📝 Publications</h2>
+  <div class="hack-grid">
+
+    <!-- Hackathon Win 1 -->
+    <div class="hack-card">
+  <div class="card-inner">
+    <div class="card-front">
+      <h3>Yuva-AI-Thon,VIT Chennai</h3>
+      <p>FIRST PLACE </p>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7384858177831620608/" target="_blank" class="proof-link">LinkedIn Proof</a>
+
+    </div>
+    <div class="card-back">
+      <p> I secured 𝟭𝘀𝘁 𝗣𝗹𝗮𝗰𝗲 𝗮𝘁 𝘁𝗵𝗲 𝗬𝗨𝗩𝗔–𝗔𝗜–𝗧𝗛𝗢𝗡 – 𝗡𝗮𝘁𝗶𝗼𝗻𝗮𝗹 𝗟𝗲𝘃𝗲𝗹 𝗔𝗜 𝗛𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻, 𝗵𝗼𝘀𝘁𝗲𝗱 𝗯𝘆 𝗩𝗜𝗧 𝗖𝗵𝗲𝗻𝗻𝗮𝗶!</p>
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7384858177831620608/" target="_blank" class="proof-link">LinkedIn Proof</a>
+    </div>
+  </div>
+</div>
+
+    <!-- Hackathon Win 2 -->
+   <div class="hack-card">
+  <div class="card-inner">
+    <div class="card-front">
+      <h3>Nokia National-Level Hackathon</h3>
+      <p>SECOND PLACE</p>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7407453953036038144/" target="_blank" class="proof-link">LinkedIn Proof</a>
+
+    </div>
+    <div class="card-back">
+      <p>I secured 2nd Place 🥈 at the Nokia National-Level Hackathon on Production Optimization, winning a ₹15,000 cash prize 💰 and an exciting opportunity to propose our solution to Nokia.</p>
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7407453953036038144/" target="_blank" class="proof-link">LinkedIn Proof</a>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Hackathon Participation -->
+    <div class="hack-card">
+  <div class="card-inner">
+    <div class="card-front">
+      <h3>Intel Gen AI Hackathon</h3>
+      <p>SELECTED FOR SEMI-FINALS</p>
+            <a href="https://www.linkedin.com/posts/kamal-addithan-bhavani_intelgenaihackathon-ai-machinelearning-activity-7250886426198704128-TKs9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsWZ7wBzqASs4_IzoKZoxmUD1gIC3xk7P4" target="_blank" class="proof-link">LinkedIn Proof</a>
+
+    </div>
+    <div class="card-back">
+      <p>From diving deep into AI tools to collaborating with talented minds, this hackathon provided me with new skills, fresh perspectives, and an even stronger passion for AI innovation.</p>
+      <a href="https://www.linkedin.com/posts/kamal-addithan-bhavani_intelgenaihackathon-ai-machinelearning-activity-7250886426198704128-TKs9?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEsWZ7wBzqASs4_IzoKZoxmUD1gIC3xk7P4" target="_blank" class="proof-link">LinkedIn Proof</a>
+    </div>
+  </div>
+</div>
+
+
+    <!-- MIT Paper -->
+    <div class="hack-card">
+  <div class="card-inner">
+    <div class="card-front">
+      <h3>MIT SQUARE LONDON</h3>
+      <p>Startup Research paper Published</p>
+            <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412090174542643200/" target="_blank" class="proof-link">LinkedIn Proof</a>
+
+    </div>
+    <div class="card-back">
+      <p> 𝗜 𝗵𝗮𝘃𝗲 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝗺𝘆 𝗿𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗶𝗻𝘁𝗲𝗿𝗻𝘀𝗵𝗶𝗽 𝗮𝘁 𝗠𝗜𝗧 𝗦𝗾𝘂𝗮𝗿𝗲 𝗟𝗼𝗻𝗱𝗼𝗻, and along this journey, one of my key research works has now been officially protected under international copyright.</p>
+      <a href="https://www.linkedin.com/feed/update/urn:li:activity:7412090174542643200/" target="_blank" class="proof-link">LinkedIn Proof</a>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+<section class="experience">
+  <h2>Experience</h2>
+  <div class="timeline">
+    <div class="timeline-card">
+      <div class="card-content">
+        <h3>Full Stack Development Intern-Offline</h3>
+        <p class="company">Vcodez,Sholinganallur</p>
+        <p class="duration">July 2025 – December 2025</p>
+        <p class="description">
+          Worked on building an AI-driven dashboard for real-time analytics, optimized backend queries, and implemented responsive UI components.
+        </p>
+        <a href="experience-vcodez.html" class="view-details">View Details</a>
+      </div>
+    </div>
+
+    <div class="timeline-card">
+      <div class="card-content">
+        <h3>Research and Development Intern-Hybrid</h3>
+        <p class="company">MIT SQUARE LONDON</p>
+        <p class="duration">December 2024 – March 2025</p>
+        <p class="description">
+           𝗜 𝗵𝗮𝘃𝗲 𝘀𝘂𝗰𝗰𝗲𝘀𝘀𝗳𝘂𝗹𝗹𝘆 𝗰𝗼𝗺𝗽𝗹𝗲𝘁𝗲𝗱 𝗺𝘆 𝗿𝗲𝘀𝗲𝗮𝗿𝗰𝗵 𝗶𝗻𝘁𝗲𝗿𝗻𝘀𝗵𝗶𝗽 𝗮𝘁 𝗠𝗜𝗧 𝗦𝗾𝘂𝗮𝗿𝗲 𝗟𝗼𝗻𝗱𝗼𝗻, and along this journey, one of my key research works has now been officially protected under international copyright
+        </p>
+        <a href="experience-innovatech.html" class="view-details">View Details</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="about-me grid-bg" id="about">
+
+  <div class="about-container">
+
+    <!-- LEFT -->
+    <div class="about-image">
+      <img src="assests/images/about-portrait.jpg" alt="Kamal Addithan">
+    </div>
+
+    <!-- RIGHT -->
+    <div class="about-content">
+      <span class="about-tag">ABOUT ME</span>
+      <p id="about-typed"></p>
+    </div>
+
+  </div>
+
+</section>
+
+  
+
+  
+<section class="testimonials ">
+  <h2>What People Say</h2>
+
+  <div class="testimonial-track">
+    <div class="testimonial">
+      <p>
+        “Kamal demonstrates exceptional clarity of thought and a rare ability
+        to connect research with real-world impact.”
+      </p>
+      <span>— Research Mentor, MIT Square</span>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “His problem-solving mindset and ownership stood out even among
+        experienced interns.”
+      </p>
+      <span>— Technical Lead, VCODEZ</span>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “Kamal approaches challenges like a researcher and executes like
+        an engineer.”
+      </p>
+      <span>— Hackathon Jury Member</span>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “A strong blend of technical depth, communication, and vision.”
+      </p>
+      <span>— Project Collaborator</span>
+    </div>
+
+    <div class="testimonial">
+      <p>
+        “His work ethic and curiosity make him a valuable contributor
+        to any innovation-driven team.”
+      </p>
+      <span>— Startup Mentor</span>
+    </div>
+  </div>
+</section>
+<section class="contact-me grid-bg">
+
+  <!-- Floating particles canvas -->
+  <canvas id="contact-canvas"></canvas>
+
+  <div class="contact-wrapper">
+
+    <!-- LEFT: Contact Info & Social -->
+    <div class="contact-info">
+      <h2>Get In Touch</h2>
+      <p>Have a project or idea? Let’s connect and create something amazing together.</p>
+
+      <div class="contact-details">
+        <div><strong>Email:</strong> kamaladdithansbofficial@gmail.com</div>
+        <div><strong>Phone:</strong> +91 7904961661</div>
+        <div><strong>Location:</strong>India</div>
+      </div>
+
+      <div class="contact-socials">
+        <a href="https://www.linkedin.com/in/kamal-addithan-bhavani/" class="social-btn">LinkedIn</a>
+        <a href="https://github.com/kamaladdithanSB" class="social-btn">GitHub</a>
+        <a href="https://x.com/AddikSb" class="social-btn">Twitter</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Contact Form -->
+    <div class="contact-form-wrapper">
+      <form class="contact-form" id="contact-form">
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Your Email" required>
+  <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+  <button type="submit">Send Message</button>
+</form>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SCRIPTS -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+  const text = "I don’t chase technologies.\nI chase problems worth solving.\n-Kamal Addi";
+  const target = document.getElementById("typed-text");
+  let index = 0;
+
+  function typeEffect() {
+    if (index < text.length) {
+      target.innerHTML += text[index] === "\n" ? "<br>" : text[index];
+      index++;
+      setTimeout(typeEffect, 60);
+    }
+  }
+
+  // start typing after page load
+  window.addEventListener("load", () => {
+    setTimeout(typeEffect, 600);
+  });
+</script>
+
+
+<script>
+  const track = document.querySelector('.testimonial-track');
+  track.innerHTML += track.innerHTML; // seamless loop
+</script>
+<section class="about-me" id="about-me">
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("MTF5IDeGH_aof_0TT");
+</script>
+
+</body>
+</html>
