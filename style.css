@@ -227,6 +227,12 @@ html, body {
     linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   background-size: 48px 48px;
 }
+@media (max-width: 768px) {
+  .projects {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
 
 
@@ -1235,4 +1241,10 @@ html, body {
     linear-gradient(90deg, rgba(0,0,0,0.08) 1px, transparent 1px),
     #ffffff; /* base color */
   background-size: 60px 60px;
+}
+
+@media (max-width: 768px) {
+  .hero-typing {
+    display: none;
+  }
 }

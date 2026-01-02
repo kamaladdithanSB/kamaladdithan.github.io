@@ -1,6 +1,8 @@
 // ===============================
 // HERO WEBGL
 // ===============================
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 const canvas = document.getElementById("hero-canvas");
 const heroRight = document.querySelector(".hero-right");
 const heroLeft = document.querySelector(".hero-left");
@@ -305,3 +307,16 @@ document.getElementById("contact-form").addEventListener("submit", function(e) {
     alert("Failed to send message.");
   });
 });
+
+if (!isMobile) {
+  gsap.from(".projects", {
+    opacity: 0,
+    y: 40,
+    duration: 0.8,
+    stagger: 0.15,
+    scrollTrigger: {
+      trigger: "#projects",
+      start: "top 70%",
+    }
+  });
+}
